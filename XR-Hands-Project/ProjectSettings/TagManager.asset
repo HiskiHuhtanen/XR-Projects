@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Anchor
   - TNT
+  - aa
+  - PLAYER
   layers:
   - Default
   - TransparentFX
