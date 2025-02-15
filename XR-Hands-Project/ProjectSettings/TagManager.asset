@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - TNT
   layers:
   - Default
   - TransparentFX
