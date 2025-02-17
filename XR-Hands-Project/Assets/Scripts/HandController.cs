@@ -5,17 +5,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class HandController : MonoBehaviour
 {
     ActionBasedController controller;
-    Hand hand;
+    public Hand hand;
 
 
     void Start()
     {
-        
+        controller = GetComponent<ActionBasedController>();   
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        hand.setGrip(controller.selectAction.action.ReadValue<float>());
+        hand.setTrigger(controller.activateAction.action.ReadValue<float>());
     }
 }
