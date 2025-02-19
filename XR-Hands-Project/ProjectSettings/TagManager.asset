@@ -8,6 +8,9 @@ TagManager:
   - TNT
   - aa
   - PLAYER
+  - FUSE
+  - Button
+  - Exploder
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Temp
   - 
   - 
   - 
