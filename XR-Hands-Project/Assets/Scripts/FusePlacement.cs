@@ -8,7 +8,7 @@ public class FusePlacement : MonoBehaviour
     private bool isOccupied = false;
 
     private static int fuseCount = 0;
-    private static int requiredFuses = 3;
+    private static int requiredFuses = 4;
     public Light indicatorLight;
     public GameObject door;
     public float doorMoveSpeed = 2f;
