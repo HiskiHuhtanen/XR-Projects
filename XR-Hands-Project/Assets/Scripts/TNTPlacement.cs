@@ -72,7 +72,7 @@ public class TNTPlacement : MonoBehaviour
         {
             foreach (Collider col in exploder.GetComponents<Collider>())
             {
-                col.enabled = true; // Enable exploder's colliders
+                col.enabled = true;
             }
         }
     }
