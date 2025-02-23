@@ -5,10 +5,11 @@ using System.Collections;
 public class DirectiveTrigger : MonoBehaviour
 {
     public TextMeshProUGUI directiveText;
-    public string newDirective = "Directive: Delve Deeper"; // Custom message per trigger
-    public float displayTime = 5f; // Total time before disappearing
-    public Color glitchColor = new Color(1f, 0f, 1f); // Pink color for glitch
-    public AudioSource glitchSound; // Assign a glitch SFX in Inspector
+    public string newDirective = "Directive: Continue";
+    public float displayTime = 5f;
+    public Color glitchColor = new Color(1f, 0f, 1f);
+    public AudioSource glitchSound;
+    public float typingSpeed = 0.05f;
 
     private bool triggered = false;
 
@@ -23,25 +24,29 @@ public class DirectiveTrigger : MonoBehaviour
 
     IEnumerator DisplayGlitchDirective()
     {
-        // Show normal directive first
-        directiveText.text = "Directive: Return to Charging Station";
-
-        yield return new WaitForSeconds(1.5f); // Show for 1.5 sec before glitch
-
-        // Play glitch sound
+        string normalDirective = "Directive: Return back t";
+        yield return StartCoroutine(TypeText(normalDirective));
+        
+        yield return new WaitForSeconds(1.5f);
         if (glitchSound) glitchSound.Play();
+        
 
-        // Apply corrupted text effect (glitching)
-        directiveText.text = "Directive: R̸̨̝͎̹̆͂̎̕e̶̦͍͖̅̐t̷̡̹͖̀̿̏̕͠u̴̠̬͉̥̿̈́̄r̵̲̪̗̎n̶̡͈̝̹̎̍̚ ̵̩̥̩̤͋b̵̬̠̲̙̊̋ä̵̙̒c̶̥̐̾͠k̷͙̼̪̼̆̾̈́ ̶̳̾t̵̹̘͚̊͐̕o̷͖̬͎̾̄͌ ̵̢̞̘͆̋̂c̵̟̤̩͋̽̾̈́ḧ̷̯̖̦́͌͠ą̴̦̙̉̋r̷̙̳͆̓͂͠g̶̛̪̰̾̆ì̵̛̘͕̯n̵̲̞̠̑̈́̿̏g̴̲͆͊̿͠ ̴̜̔̚s̴̳̬̏̐ẗ̴̺̜́̄͑a̷̝̥̕t̶̝̾i̶̹̤̿̓o̵̹̼̍͌̓n̵̠̄";
+        directiveText.text = "Directive: R̸̨̝͎̹̆͂̎̕e̶̦͍͖̅̐t̷̡̹͖̀̿̏̕͠u̴̠̬͉̥̿̈́̄r̵̲̪̗̎n̶̡͈̝̹̎̍̚ ̵̩̥̩̤͋b̵̬̠̲̙̊̋ä̵̙̒c̶̥̐̾͠k̷͙̼̪̼̆̾̈́ ";
+        yield return new WaitForSeconds(0.8f);
 
-        yield return new WaitForSeconds(0.8f); // Hold the glitch effect
-
-        // Change to the new directive (in pink)
         directiveText.text = $"<color=#{ColorUtility.ToHtmlStringRGB(glitchColor)}>{newDirective}</color>";
-
-        yield return new WaitForSeconds(displayTime); // Keep new directive on screen
-
-        // Hide the text
+        yield return new WaitForSeconds(displayTime);
         directiveText.text = "";
+    }
+
+
+    IEnumerator TypeText(string textToType)
+    {
+        directiveText.text = "";
+        foreach (char letter in textToType)
+        {
+            directiveText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
 }

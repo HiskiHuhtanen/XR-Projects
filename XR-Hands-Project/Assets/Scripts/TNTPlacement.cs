@@ -4,10 +4,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class TNTPlacement : MonoBehaviour
 {
     public GameObject snapPosition;
-    public GameObject wireObject;   
+    public GameObject wireObject;
 
-    private static int tntCount = 0; 
-    private static int totalTNT = 3; 
+    private static int tntCount = 0;
+    private static int totalTNT = 3;
 
     public static TNTPlacement[] placements;
     public static GameObject exploder;
@@ -16,18 +16,12 @@ public class TNTPlacement : MonoBehaviour
 
     private void Start()
     {
-
         if (exploder == null)
-            exploder = GameObject.FindWithTag("Exploder"); 
+            exploder = GameObject.FindWithTag("Button");
 
-
-        // Ensure exploder colliders are disabled at start
         if (exploder != null)
         {
-            foreach (Collider col in exploder.GetComponents<Collider>())
-            {
-                col.enabled = false;
-            }
+            SetExploderCollidersState(false);
         }
     }
 
@@ -48,18 +42,16 @@ public class TNTPlacement : MonoBehaviour
         tnt.transform.position = snapPosition.transform.position;
         tnt.transform.rotation = snapPosition.transform.rotation;
         Rigidbody rb = tnt.GetComponent<Rigidbody>();
-        if (rb) rb.isKinematic = true; // Disable physics
+        if (rb) rb.isKinematic = true;
 
         isOccupied = true;
         tntCount++;
 
-        
         if (wireObject != null)
         {
-            wireObject.layer = LayerMask.NameToLayer("Default"); 
+            wireObject.layer = LayerMask.NameToLayer("Default");
         }
 
-        // Check if all TNTs are placed
         if (tntCount >= totalTNT)
         {
             ActivateExploder();
@@ -70,9 +62,17 @@ public class TNTPlacement : MonoBehaviour
     {
         if (exploder != null)
         {
+            SetExploderCollidersState(true);
+        }
+    }
+
+    private static void SetExploderCollidersState(bool state)
+    {
+        if (exploder != null)
+        {
             foreach (Collider col in exploder.GetComponents<Collider>())
             {
-                col.enabled = true;
+                col.enabled = state;
             }
         }
     }
