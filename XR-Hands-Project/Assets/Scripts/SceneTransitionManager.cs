@@ -37,18 +37,17 @@ public class SceneTransitionManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("FadeQuad has no Renderer!");
+                Debug.LogError("FadeQuad unohtu");
             }
         }
         else
         {
-            Debug.LogError("FadeQuad is not assigned!");
+            Debug.LogError("FadeQuad unohtu");
         }
     }
 
     IEnumerator ArrivalSequence()
     {
-        Debug.Log("Scene started, waiting before fade-in...");
         yield return new WaitForSeconds(waitBeforeFade);
 
         if (fadeInSound != null)
@@ -57,7 +56,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No fade-in sound assigned!");
+            Debug.LogWarning("ääni unohtu");
         }
 
         yield return StartCoroutine(FadeFromBlack());
@@ -67,7 +66,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     IEnumerator FadeFromBlack()
     {
-        Debug.Log("Fading in...");
         float timer = 0f;
         Color color = fadeMaterial.color;
 
@@ -79,9 +77,8 @@ public class SceneTransitionManager : MonoBehaviour
             yield return null;
         }
 
-        fadeMaterial.color = new Color(0, 0, 0, 0); // Fully transparent
-        fadeQuad.layer = hiddenLayer; // Move to Hidden layer
-        Debug.Log("FadeQuad moved to Hidden layer.");
+        fadeMaterial.color = new Color(0, 0, 0, 0);
+        fadeQuad.layer = hiddenLayer;
     }
 
     IEnumerator DisplayDirectives()
@@ -109,7 +106,6 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void StartFadeOut()
     {
-        Debug.Log("Fading out...");
         StartCoroutine(FadeToBlackAndLoad());
     }
 
@@ -121,7 +117,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No fade-out sound assigned!");
+            Debug.LogWarning("ääni unohtu");
         }
 
         float timer = 0f;

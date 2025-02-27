@@ -6689,53 +6689,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecad917932b04754ca77ddba10590332, type: 3}
---- !u!1 &1158895550
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1158895552}
-  - component: {fileID: 1158895551}
-  m_Layer: 0
-  m_Name: SceneTransition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1158895551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158895550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45c365d8e7886843bdff2e96c153ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeQuad: {fileID: 751229205}
-  fadeDuration: 1.5
-  nextSceneName: The-Mine
---- !u!4 &1158895552
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1158895550}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.789227, y: 3.8019042, z: 0.16663907}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1168885043
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8546,7 +8499,7 @@ Transform:
   m_GameObject: {fileID: 1527798173}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.435, y: 46.525, z: 144.425}
+  m_LocalPosition: {x: -41.435, y: 46.5395, z: 144.425}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9444,7 +9397,7 @@ MonoBehaviour:
   onPressed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1158895551}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FadeScreen, Assembly-CSharp
         m_MethodName: StartFade
         m_Mode: 1
@@ -12819,7 +12772,6 @@ SceneRoots:
   - {fileID: 339578803}
   - {fileID: 1647117484}
   - {fileID: 1382912490}
-  - {fileID: 1158895552}
   - {fileID: 1426864064}
   - {fileID: 1509458585}
   - {fileID: 1122675690}

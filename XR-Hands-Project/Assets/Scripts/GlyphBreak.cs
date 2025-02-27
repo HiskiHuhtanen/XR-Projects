@@ -13,15 +13,15 @@ public class GlyphDestruction : MonoBehaviour
     {
         if (other.CompareTag("FUSE"))
         {
+            hitSound.Play();
             hitCount++;
-            if (hitSound != null)
-                hitSound.Play();
             if (hitCount <= glyphParts.Length)
             {
                 Destroy(glyphParts[hitCount - 1]); 
             }
             if (hitCount >= maxHits && door != null)
             {
+                hitSound.Play();
                 Destroy(gameObject);
                 Destroy(door.GetComponent<Collider>());
                 door.layer = LayerMask.NameToLayer("Hidden");

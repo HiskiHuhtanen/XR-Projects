@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BootSequence : MonoBehaviour
 {
-    public TextMeshProUGUI bootText;  // Assign in Inspector
+    public TextMeshProUGUI bootText;
     public float typingSpeed = 0.05f;
-    public GameObject blackoutScreen; // Assign Quad or use Camera fade
+    public GameObject blackoutScreen;
 
     private string[] bootMessages = new string[]
     {
@@ -28,7 +28,7 @@ public class BootSequence : MonoBehaviour
 
     IEnumerator StartBootSequence()
     {
-        yield return new WaitForSeconds(1f); // Wait before starting
+        yield return new WaitForSeconds(1f);
 
         bootText.text = "";
         foreach (string message in bootMessages)
@@ -36,11 +36,7 @@ public class BootSequence : MonoBehaviour
             yield return StartCoroutine(TypeText(message));
             yield return new WaitForSeconds(1f);
         }
-
-        // Fade out the text
         yield return StartCoroutine(FadeTextOut());
-
-        // Fade the black screen to clear vision
         if (blackoutScreen != null)
         {
             yield return StartCoroutine(FadeToClear());
@@ -81,6 +77,6 @@ public class BootSequence : MonoBehaviour
             yield return null;
         }
 
-        blackoutScreen.SetActive(false); // Hide after fade
+        blackoutScreen.SetActive(false);
     }
 }
